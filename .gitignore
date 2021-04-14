@@ -1,0 +1,34 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+.directory
+
+# Dependency directories
+/node_modules
+/vendor/
+
+# Environment
+.env
+
+# Temp files
+tmp/*
+
+# Editor files
+.vscode
+*.sublime-project
+*.sublime-workspace
+
+# Sass preprocessor
+.sass-cache/
+
+# Private files
+*.der
+*.key
+*.pem
+*.ppk
