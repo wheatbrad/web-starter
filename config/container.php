@@ -5,6 +5,8 @@ use Psr\Http\Message\ResponseFactoryInterface;
 use Slim\App;
 use Slim\Factory\AppFactory;
 use Slim\Middleware\ErrorMiddleware;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
 
 return [
     'settings' => function () {
@@ -28,6 +30,17 @@ return [
             (bool) $settings['log_errors'],
             (bool) $settings['log_error_details']
         );
+    },
+
+    Environment::class => function (ContainerInterface $container) {
+        return new Environment($container->get(FilesystemLoader::class), [
+            'cache' => __DIR__.'/../tmp',
+            'auto_reload' => true // should be false in production
+        ]);
+    },
+
+    FilesystemLoader::class => function () {
+        return new FilesystemLoader(__DIR__.'/../templates');
     },
 
     \PDO::class => function (ContainerInterface $container) {
