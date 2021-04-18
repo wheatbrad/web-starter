@@ -1,7 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block title %} – Welcome{% endblock %}
-{% block body %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+{% block content %}
     <h1>Welcome!</h1>
     <p>This is where things happen.</p>
 {% endblock %}
