@@ -1,0 +1,27 @@
+{
+  "name": "web-starter",
+  "version": "1.0.0",
+  "description": "Pitch to web team as boilerplate for web projects (LAMP stack) not requiring a specific framework.",
+  "private": true,
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wheatbrad/web-starter.git"
+  },
+  "author": "Brad Runnels",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wheatbrad/web-starter/issues"
+  },
+  "homepage": "https://github.com/wheatbrad/web-starter#readme",
+  "devDependencies": {
+    "webpack": "^5.33.2",
+    "webpack-cli": "^4.6.0"
+  }
+}
