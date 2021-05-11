@@ -2,6 +2,7 @@
 
 use DI\ContainerBuilder;
 use Slim\App;
+use Slim\Middleware\ErrorMiddleware;
 
 require_once dirname(__DIR__).'/vendor/autoload.php';
 
@@ -12,7 +13,10 @@ $app = $container->get(App::class);
 
 // Register routes
 (require __DIR__.'/routes.php')($app);
+
 // Register middleware
-(require __DIR__.'/middleware.php')($app);
+$app->addBodyParsingMiddleware();
+$app->addRoutingMiddleware();    
+$app->add(ErrorMiddleware::class);
 
 return $app;
