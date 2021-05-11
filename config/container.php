@@ -43,7 +43,7 @@ return [
         return new FilesystemLoader(__DIR__.'/../templates');
     },
 
-    \PDO::class => function (ContainerInterface $container) {
+    PDO::class => function (ContainerInterface $container) {
         $settings = $container->get('settings')['db'];
         
         $host = $settings['host'];
