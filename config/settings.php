@@ -12,11 +12,6 @@ date_default_timezone_set('America/New_York');
 
 $settings = [];
 
-// Path settings
-$settings['root']   = dirname(__DIR__);
-$settings['temp']   = $settings['root'].'/tmp';
-$settings['public'] = $settings['root'].'/public';
-
 // Error handling middleware settings
 $settings['error'] = [
     // Set to false in production
