@@ -1,3 +1,5 @@
 <?php
 
-(require dirname(__DIR__).'/config/bootstrap.php')->run();
+define('APP_ROOT', dirname(__DIR__));
+
+(require APP_ROOT.'/config/bootstrap.php')->run();

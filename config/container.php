@@ -34,13 +34,13 @@ return [
 
     Environment::class => function (ContainerInterface $container) {
         return new Environment($container->get(FilesystemLoader::class), [
-            'cache' => ROOT.'/tmp',
+            'cache' => APP_ROOT.'/tmp',
             'auto_reload' => true // should be false in production
         ]);
     },
 
     FilesystemLoader::class => function () {
-        return new FilesystemLoader(ROOT.'/templates');
+        return new FilesystemLoader(APP_ROOT.'/templates');
     },
 
     PDO::class => function (ContainerInterface $container) {
