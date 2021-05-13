@@ -10,6 +10,8 @@
 </head>
 <body>
     {% block content %}{% endblock %}
-    {% block javascripts %}{% endblock %}
+    {% block javascripts %}
+        {% webpack_entry_js 'main' %}
+    {% endblock %}
 </body>
 </html>
