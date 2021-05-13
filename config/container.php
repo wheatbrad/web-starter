@@ -1,5 +1,6 @@
 <?php
 
+use Fullpipe\TwigWebpackExtension\WebpackExtension;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Slim\App;
@@ -33,10 +34,17 @@ return [
     },
 
     Environment::class => function (ContainerInterface $container) {
-        return new Environment($container->get(FilesystemLoader::class), [
+        $twig = new Environment($container->get(FilesystemLoader::class), [
             'cache' => APP_ROOT.'/tmp',
             'auto_reload' => true // should be false in production
         ]);
+        
+        $twig->addExtension(new WebpackExtension(
+            APP_ROOT.'/public/manifest.json',
+            APP_ROOT.'/public'
+        ));
+
+        return $twig;
     },
 
     FilesystemLoader::class => function () {
