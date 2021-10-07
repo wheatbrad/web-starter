@@ -33,8 +33,9 @@ return [
         );
     },
 
-    Environment::class => function (ContainerInterface $container) {
-        $twig = new Environment($container->get(FilesystemLoader::class), [
+    Environment::class => function () {
+        $loader = new FilesystemLoader(APP_ROOT.'/templates');
+        $twig = new Environment($loader, [
             'cache' => APP_ROOT.'/tmp',
             'auto_reload' => true // should be false in production
         ]);
@@ -45,10 +46,6 @@ return [
         ));
 
         return $twig;
-    },
-
-    FilesystemLoader::class => function () {
-        return new FilesystemLoader(APP_ROOT.'/templates');
     },
 
     PDO::class => function (ContainerInterface $container) {
