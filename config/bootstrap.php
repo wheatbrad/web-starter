@@ -12,7 +12,7 @@ $container = $containerBuilder->build();
 $app = $container->get(App::class);
 
 // Register routes
-(require __DIR__.'/routes.php')($app);
+(require APP_ROOT.'/app/routes.php')($app);
 
 // Register middleware
 $app->addBodyParsingMiddleware();
