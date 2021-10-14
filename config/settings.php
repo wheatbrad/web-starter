@@ -36,7 +36,7 @@ $settings['db'] = [
         // Enable exceptions
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         // Emulate prepared statements
-        PDO::ATTR_EMULATE_PREPARES => true,
+        PDO::ATTR_EMULATE_PREPARES => false,
         // Set default fetch mode to object
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
         // Set character set
