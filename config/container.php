@@ -34,7 +34,7 @@ return [
     },
 
     Environment::class => function () {
-        $loader = new FilesystemLoader(APP_ROOT.'/templates');
+        $loader = new FilesystemLoader(APP_ROOT.'/app/View');
         $twig = new Environment($loader, [
             'cache' => APP_ROOT.'/tmp',
             'auto_reload' => true // should be false in production
