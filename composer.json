@@ -1,5 +1,5 @@
 {
-    "name": "runnels/web-starter",
+    "name": "wheatbrad/web-starter",
     "description": "Boilerplate to get web project off the ground.",
     "require": {
         "fullpipe/twig-webpack-extension": "^4.0",
@@ -12,7 +12,7 @@
         "phpunit/phpunit": "^9.5"
     },
     "scripts": {
-        "serve": "@php -S localhost:8888 -t public/"
+        "serve": "@php -S localhost:8881 -t public/"
     },
     "autoload":{
         "psr-4": {
