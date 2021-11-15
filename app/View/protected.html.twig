@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} – Protected{% endblock %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+{% block content %}
+    <h1>Protected Route</h1>
+    <p>Welcome {{ name }}, it seems you are authorized to see this content</p>
+{% endblock %}

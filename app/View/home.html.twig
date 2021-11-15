@@ -5,6 +5,7 @@
     {{ parent() }}
 {% endblock %}
 {% block content %}
-    <h1>Welcome!</h1>
-    <p>This is where things happen.</p>
+    <h1>Home</h1>
+    <p>Welcome {{ name }}</p>
+    <p>This is the web starter. Session status: {{ session }}</p>
 {% endblock %}
