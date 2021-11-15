@@ -6,41 +6,19 @@ class SessionManager
 {
     public function __construct() {
         if (session_status() === PHP_SESSION_NONE) {
-            /**
-             * TODO: pass array in from config
-             *       possibly include session_cache_limiter
-             *       and session_cache_expire
-             */
-            session_start([
-                'name' => 'fbpc_sess',
-                'save_handler' => 'files',
-                // 'cookie_lifetime' => 0,
-                'cookie_path' => '/',
-                'cookie_domain' => $_SERVER['SERVER_NAME'],
-                'cookie_secure' => false,
-                'cookie_httponly' => true,
-                'cookie_samesite' => 'lax',
-                'sid_length' => 64,
-                'sid_bits_per_character' => 5
-            ]);
+            $this->initiateSession();
         }
 
         if (isset($_SESSION['destroyed_at'])) {
             if ($_SESSION['destroyed_at'] < time() - 300) {
-                // Should not happen usually. This could be attack or due to unstable network.
-                // Remove all authentication status of this users session.
-                // remove_all_authentication_flag_from_active_sessions($_SESSION['userid']);
+                // TODO: Remove ALL auth status from session`
             }
 
             if (isset($_SESSION['new_session_id'])) {
-                // Not fully expired yet. Could be lost cookie by unstable network.
-                // Try again to set proper session ID cookie.
-                // NOTE: Do not try to set session ID again if you would like to remove
-                // authentication flag.
+                // Might be a lost cookie due to unreliable connection
                 session_write_close();
                 session_id($_SESSION['new_session_id']);
-                // New session ID should exist
-                session_start();
+                $this->initiateSession();
             }
         }
     }
@@ -78,7 +56,7 @@ class SessionManager
         // Start new session with new session ID
         session_id($newSessionID);
         ini_set('session.use_strict_mode', '0');
-        session_start();
+        $this->initiateSession();
         ini_set('session.use_strict_mode', '1');
         
         unset($_SESSION['destroyed_at']);
@@ -110,5 +88,26 @@ class SessionManager
             session_unset();
             session_destroy();
         }
+    }
+
+    private function initiateSession(): void
+    {
+        /**
+         * TODO: pass array in from config
+         *       possibly include session_cache_limiter
+         *       and session_cache_expire
+         */
+        session_start([
+            'name' => 'fbpc_sess',
+            'save_handler' => 'files',
+            // 'cookie_lifetime' => 0,
+            'cookie_path' => '/',
+            'cookie_domain' => $_SERVER['SERVER_NAME'],
+            'cookie_secure' => false,
+            'cookie_httponly' => true,
+            'cookie_samesite' => 'lax',
+            'sid_length' => 64,
+            'sid_bits_per_character' => 5
+        ]);
     }
 }
