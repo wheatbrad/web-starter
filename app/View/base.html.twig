@@ -1,17 +1,19 @@
+{% apply spaceless %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    {% block head %}
+    <head>
+        {% block head %}
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Website Name{% block title %}{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
-    {% endblock %}
-</head>
-<body>
-    {% block content %}{% endblock %}
-    {% block javascripts %}
+        {% endblock %}
+    </head>
+    <body>
+        {% block content %}{% endblock %}
+        {% block javascripts %}
         {% webpack_entry_js 'main' %}
-    {% endblock %}
-</body>
+        {% endblock %}
+    </body>
 </html>
+{% endapply %}
