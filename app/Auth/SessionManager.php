@@ -106,7 +106,7 @@ class SessionManager
             'cookie_secure' => false,
             'cookie_httponly' => true,
             'cookie_samesite' => 'lax',
-            'sid_length' => 64,
+            'sid_length' => 128,
             'sid_bits_per_character' => 5
         ]);
     }
