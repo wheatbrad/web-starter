@@ -5,6 +5,8 @@ namespace App\Auth;
 class SessionManager
 {
     public function __construct() {
+        ini_set('session.use_strict_mode', '1');
+        
         if (session_status() === PHP_SESSION_NONE) {
             $this->initiateSession();
         }
@@ -55,9 +57,8 @@ class SessionManager
 
         // Start new session with new session ID
         session_id($newSessionID);
-        ini_set('session.use_strict_mode', '0');
         $this->initiateSession();
-        ini_set('session.use_strict_mode', '1');
+        
         
         unset($_SESSION['destroyed_at']);
         unset($_SESSION['new_session_id']);
