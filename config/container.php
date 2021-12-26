@@ -17,10 +17,10 @@ return [
             'auto_reload' => true // should be false in production
         ]);
         
-        $twig->addExtension(new WebpackExtension(
-            APP_ROOT.'/public/manifest.json',
-            APP_ROOT.'/public'
-        ));
+        // $twig->addExtension(new WebpackExtension(
+        //     APP_ROOT.'/public/manifest.json',
+        //     APP_ROOT.'/public'
+        // ));
 
         return $twig;
     },
