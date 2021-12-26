@@ -27,29 +27,6 @@ final class PageController
         return $response;
     }
 
-    public function login(Request $request, Response $response): Response
-    {
-        $this->session->regenerateID();
-        $this->session->set('name', 'Brad');
-        $this->session->set('authenticated', true);
-        $response->getBody()->write($this->twig->render('login.html.twig', [
-            'remember' => Utilities::generateCryptographicNonce(64),
-            'csrf' => Utilities::generateCryptographicNonce(64),
-            'name' => $this->session->get('name')
-        ]));
-
-        return $response;
-    }
-
-    public function logout(Request $request, Response $response): Response
-    {
-        $this->session->destroy();
-
-        return $response
-            ->withHeader('Location', '/')
-            ->withStatus(302);
-    }
-
     public function protected(Request $request, Response $response): Response
     {
         if ($this->session->get('authenticated') !== null && $this->session->get('authenticated')) {
